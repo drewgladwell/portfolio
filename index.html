@@ -1,0 +1,310 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>IS Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "primary-fixed": "#dae2fd",
+                            "surface-container": "#eceef0",
+                            "secondary-fixed-dim": "#b9c7e0",
+                            "on-error-container": "#93000a",
+                            "secondary-fixed": "#d5e3fd",
+                            "surface-container-high": "#e6e8ea",
+                            "background": "#f7f9fb",
+                            "on-secondary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "outline-variant": "#c6c6cd",
+                            "surface-tint": "#565e74",
+                            "inverse-on-surface": "#eff1f3",
+                            "outline": "#76777d",
+                            "on-tertiary-fixed-variant": "#004c6e",
+                            "surface-container-highest": "#e0e3e5",
+                            "on-tertiary-fixed": "#001e2f",
+                            "surface-variant": "#e0e3e5",
+                            "on-secondary-fixed-variant": "#3a485c",
+                            "primary": "#000000",
+                            "surface-container-low": "#f2f4f6",
+                            "on-secondary-container": "#57657b",
+                            "primary-container": "#131b2e",
+                            "on-primary-container": "#7c839b",
+                            "surface-dim": "#d8dadc",
+                            "surface-container-lowest": "#ffffff",
+                            "on-tertiary-container": "#008cc7",
+                            "error": "#ba1a1a",
+                            "tertiary-fixed-dim": "#89ceff",
+                            "secondary": "#515f74",
+                            "primary-fixed-dim": "#bec6e0",
+                            "error-container": "#ffdad6",
+                            "on-error": "#ffffff",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "on-tertiary": "#ffffff",
+                            "tertiary": "#000000",
+                            "tertiary-container": "#001e2f",
+                            "secondary-container": "#d5e3fd",
+                            "inverse-primary": "#bec6e0",
+                            "inverse-surface": "#2d3133",
+                            "on-secondary-fixed": "#0d1c2f",
+                            "on-surface-variant": "#45464d",
+                            "surface-bright": "#f7f9fb",
+                            "on-surface": "#191c1e",
+                            "on-primary-fixed": "#131b2e",
+                            "tertiary-fixed": "#c9e6ff",
+                            "on-background": "#191c1e",
+                            "surface": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "stack-sm": "0.5rem",
+                            "gutter": "1.5rem",
+                            "stack-lg": "4rem",
+                            "margin-desktop": "2.5rem",
+                            "margin-mobile": "1rem",
+                            "container-max": "1280px",
+                            "stack-md": "1.5rem"
+                    },
+                    "fontFamily": {
+                            "label-sm": [
+                                    "JetBrains Mono"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "headline-xl": [
+                                    "Inter"
+                            ],
+                            "headline-lg": [
+                                    "Inter"
+                            ],
+                            "label-md": [
+                                    "JetBrains Mono"
+                            ],
+                            "headline-md": [
+                                    "Inter"
+                            ],
+                            "headline-lg-mobile": [
+                                    "Inter"
+                            ]
+                    },
+                    "fontSize": {
+                            "label-sm": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "16px",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "24px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "28px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-xl": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "56px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "40px",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "label-md": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "20px",
+                                            "letterSpacing": "0.02em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "32px",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "headline-lg-mobile": [
+                                    "28px",
+                                    {
+                                            "lineHeight": "36px",
+                                            "fontWeight": "600"
+                                    }
+                            ]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-16 bg-background dark:bg-background border-b border-outline-variant dark:border-outline transition-all duration-200 ease-in-out">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Portfolio</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#">About</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#projects">Projects</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#contact">Contact</a>
+</div>
+<div>
+<a class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded transition-colors duration-200 hover:bg-opacity-90 inline-flex items-center" href="resume.pdf">Resume</a>
+</div>
+</nav>
+<main class="flex-grow pt-24 pb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row items-center gap-gutter py-stack-lg border-b border-outline-variant">
+<div class="flex-1 space-y-stack-sm">
+<h1 class="font-headline-xl text-headline-xl text-primary">Drew Gladwell</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Early Career Data Analyst Student at Brigham Young University studying Information Systems.</p>
+<div class="pt-4 flex gap-4">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded transition-colors duration-200 hover:bg-opacity-90">Contact Me</button>
+<button class="border border-outline text-primary font-label-md text-label-md px-6 py-3 rounded transition-colors duration-200 hover:bg-surface-container">View Projects</button>
+</div>
+</div>
+<div class="flex-shrink-0">
+<div class="w-48 h-48 rounded-full overflow-hidden border-4 border-surface-container-highest shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A professional headshot portrait of a young adult tech student. The lighting is soft and studio quality, casting a gentle glow that emphasizes approachability and competence. The background is a very blurred modern office setting with subtle hints of blue and gray, aligning with a corporate-modern tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWmuDuHxQiz0rufhvcIC6gPgCum3tDRNDzHkS6amKAw1s6eV-71eX1VJRv0s-N_O0esnazFNBM8KPV99ez6DClIWB2n2c5XCL22kLGeHIoMQl0bQiYoosQFcY4LrnQhDnOn2XYLsYbaKq7ZzpfdqtIulF3cUZPv9fci3OL1YVXilU00trdDTrUwHzIZgJL_we9SxCi7orHS5xgjTqHEgmSlis1aFjF0pGJOqD29cBHA_qcw6_uHlhuqtS4p_5yteDflBzJBs3DsxU">
+</div>
+<div class="flex justify-center gap-4 mt-4">
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="https://www.linkedin.com/in/drew-gladwell-3515633a5/" target="_blank"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="https://github.com/drewgladwell" target="_blank"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
+<a class="text-secondary hover:text-primary transition-colors duration-200" href="https://www.facebook.com/drew.gladwell.2025" target="_blank"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+</div></div>
+</section>
+<!-- About Me / Skills Section -->
+<section class="py-stack-lg border-b border-outline-variant">
+<div class="space-y-stack-sm">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Education</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Brigham Young University - Marriott School of Business, Provo, UT</h3>
+<div class="flex justify-between items-baseline"><p class="font-body-lg text-body-lg text-secondary">Bachelor of Science in Information Systems, Minor in Spanish</p><p class="font-label-md text-label-md text-secondary">Apr 2029</p></div>
+</div>
+<div class="mt-2 md:mt-0"><span class="bg-surface-container text-primary font-label-sm text-label-sm px-3 py-1 rounded-full mr-2 border border-outline-variant">GPA 3.56</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-1 rounded-full">Dean's List</span>
+</div>
+</div>
+<div class="space-y-2">
+<p class="font-label-md text-label-md text-primary">Key Coursework:</p>
+<div class="flex flex-wrap gap-2"><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Computer Science (Python)</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Information Systems (SQL, VBA, HTML/CSS)</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Spreadsheet &amp; Business Analysis</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Principles of Accounting</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Intro to Economics</span></div>
+</div>
+</div>
+</div>
+</section><section class="py-stack-lg border-b border-outline-variant grid md:grid-cols-2 gap-gutter items-start">
+<div class="space-y-4"><h2 class="font-headline-lg text-headline-lg text-primary">About Me</h2><div class="space-y-4"><p class="font-body-lg text-body-lg text-primary font-bold">Mission: Transforming complex data into actionable business insights through technical innovation and analytical precision.</p><p class="font-body-md text-body-md text-on-surface-variant">I am passionate about the use and manipulation of data to better understand business environments. My foundation built at Brigham Young University's Information Systems program has equipped me with a unique blend of technical problem-solving skills and business acumen.</p><p class="font-body-md text-body-md text-on-surface-variant">Coupling classroom rigor with a drive for data analytics, I focus on creating technical projects that discern clear information from raw data to drive strategic decision-making.</p></div></div>
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-primary">Core Competencies</h3>
+<div class="flex flex-wrap gap-2"><span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Python</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">HTML/CSS</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">VBA</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">SQL</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Tableau</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Pandas</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">NumPy</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Matplotlib</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-3 py-1 rounded border border-outline-variant">Advanced Excel</span></div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-stack-lg" id="projects">
+<div class="mb-stack-md flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-primary">Technical Projects</h2>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Project Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 flex flex-col h-full hover:shadow-[0px_4px_12px_rgba(15,23,42,0.05)] transition-shadow duration-300">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">NBA Value Dashboard</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 flex-grow">Interactive web app that displays NBA players by value in terms of Box Plus/Minus per $1M salary, 2024-2025 season. Data from Basketball Reference.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Python</span>
+<span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">HTML/CSS</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-on-tertiary-container hover:text-primary transition-colors mt-auto" href="https://github.com/drewgladwell/nba-value-dashboard">
+                        View on GitHub <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 flex flex-col h-full hover:shadow-[0px_4px_12px_rgba(15,23,42,0.05)] transition-shadow duration-300">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Book of Mormon — Authorship &amp; Linguistic Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 flex-grow">Analyzed 6,500+ verses from the Book of Mormon using Python (Jupyter Notebook), Pandas, and Tableau to evaluate word frequency, vocabulary richness, and TF-IDF patterns. Developed interactive Tableau dashboards and Matplotlib visualizations using Python and Git version control before publishing the project to GitHub.</p>
+<div class="flex flex-wrap gap-2 mb-4"><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Jupyter Notebook</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Pandas</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Tableau</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">NLTK</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Matplotlib</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">WordCloud</span></div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-on-tertiary-container hover:text-primary transition-colors mt-auto" href="https://github.com/drewgladwell/BookofMormon">
+                        View on GitHub <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 flex flex-col h-full hover:shadow-[0px_4px_12px_rgba(15,23,42,0.05)] transition-shadow duration-300">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Password Strength Analyzer</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 flex-grow">A command-line tool built in Python that evaluates password strength using rule-based complexity checks and a live data breach lookup via the <a class="text-primary hover:underline" href="https://haveibeenpwned.com/API/v3">HaveIBeenPwned API</a>.</p>
+<div class="flex flex-wrap gap-2 mb-4"><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">Python</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">re</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">hashlib</span><span class="bg-surface-container font-label-sm text-label-sm text-primary px-2 py-0.5 rounded">requests</span></div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-on-tertiary-container hover:text-primary transition-colors mt-auto" href="https://github.com/drewgladwell/password-strength-analyzer/tree/main">
+                        View on GitHub <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<section class="py-stack-lg border-t border-outline-variant" id="contact">
+<div class="max-w-2xl mx-auto text-center mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Get In Touch</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Let's connect! Whether you have a question or just want to say hi, my inbox is always open.</p>
+</div>
+<form class="max-w-2xl mx-auto space-y-4 bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1">Name</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Your Name" type="text">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1">Email</label>
+<input class="w-full px-4 py-2 rounded border border-outline-variant bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="your@email.com" type="email">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1">Message</label>
+<textarea class="w-full px-4 py-2 rounded border border-outline-variant bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="How can I help you?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded transition-colors duration-200 hover:bg-opacity-90" type="submit">Send Message</button>
+</form>
+</section></main>
+<!-- Footer -->
+<footer class="w-full py-stack-md px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-sm bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline font-label-sm text-label-sm text-on-surface dark:text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity duration-200 mt-auto">
+<div class="font-label-md text-label-md font-bold text-primary dark:text-primary-fixed">Drew Gladwell Portfolio</div>
+<div class="">© 2026 Drew Gladwell. All rights reserved.</div>
+<div class="flex gap-4">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="https://www.linkedin.com/in/drew-gladwell-3515633a5/">LinkedIn</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="https://github.com/drewgladwell">GitHub</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="https://www.facebook.com/drew.gladwell.2025">Facebook</a>
+</div>
+</footer>
+
+
+</body></html>
