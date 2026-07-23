@@ -173,9 +173,9 @@
 <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-background dark:bg-background border-b border-outline-variant dark:border-outline transition-all duration-200 ease-in-out">
 <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Portfolio</div>
 <div class="hidden md:flex gap-6 items-center">
-<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#">About</a>
-<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#projects">Projects</a>
-<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#contact">Contact</a>
+<a class="nav-link text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#about">About</a>
+<a class="nav-link text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#projects">Projects</a>
+<a class="nav-link text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-md text-body-md" href="#contact">Contact</a>
 </div>
 <div>
 <a class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded transition-colors duration-200 hover:bg-opacity-90 inline-flex items-center" href="resume.pdf">Resume</a>
@@ -183,7 +183,7 @@
 </nav>
 <main class="flex-grow pt-24 pb-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
 <!-- Hero Section -->
-<section class="flex flex-col md:flex-row items-center gap-gutter py-stack-lg border-b border-outline-variant">
+<section id="about" class="flex flex-col md:flex-row items-center gap-gutter py-stack-lg border-b border-outline-variant">
 <div class="flex-1 space-y-stack-sm">
 <h1 class="font-headline-xl text-headline-xl text-primary">Drew Gladwell</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Information Systems Student at Brigham Young University.</p>
@@ -307,7 +307,47 @@
 </div>
 </footer>
 
+<!-- Navigation State Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section[id]");
 
+        // Tailwind classes for the active and inactive states
+        const activeClasses = ["text-primary", "dark:text-primary-fixed", "font-bold", "border-b-2", "border-primary", "dark:border-primary-fixed", "pb-1"];
+        const inactiveClasses = ["text-secondary", "dark:text-secondary-fixed-dim"];
 
+        function setActiveLink(activeHref) {
+            navLinks.forEach(link => {
+                if (link.getAttribute("href") === activeHref) {
+                    // Apply Active State
+                    link.classList.remove(...inactiveClasses);
+                    link.classList.add(...activeClasses);
+                } else {
+                    // Apply Inactive State
+                    link.classList.remove(...activeClasses);
+                    link.classList.add(...inactiveClasses);
+                }
+            });
+        }
 
+        // 1. Update active tab on click
+        navLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                setActiveLink(this.getAttribute("href"));
+            });
+        });
+
+        // 2. Update active tab on scroll using Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveLink("#" + entry.target.id);
+                }
+            });
+        }, { rootMargin: "-20% 0px -80% 0px" }); // Triggers when the section reaches the upper portion of the screen
+
+        sections.forEach(section => observer.observe(section));
+    });
+</script>
 </body></html>
