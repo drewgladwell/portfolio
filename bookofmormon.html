@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Drew Gladwell's interactive Tableau analysis of Book of Mormon authorship and linguistic patterns.">
+<title>Book of Mormon Analysis | Drew Gladwell</title>
+<link rel="icon" href="favicon-dg-dark.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f7f9fb; color: #191c1e; font-family: Inter, sans-serif; line-height: 1.6; }
+a { color: inherit; text-underline-offset: 4px; }
+a:focus-visible { outline: 3px solid #008cc7; outline-offset: 5px; }
+nav { border-bottom: 1px solid #c6c6cd; padding: 18px 24px; }
+nav a { color: #515f74; font-size: 14px; font-weight: 600; text-decoration: none; }
+main { max-width: 1280px; margin: auto; padding: 48px 24px 64px; }
+.eyebrow { color: #515f74; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; letter-spacing: -.02em; margin: 12px 0 20px; max-width: 900px; }
+.intro { max-width: 760px; color: #45464d; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 36px; }
+.actions a { padding: 10px 16px; border: 1px solid #76777d; border-radius: 4px; text-decoration: none; font-size: 14px; }
+.actions a:first-child { background: #000; border-color: #000; color: #fff; }
+h2 { font-size: 24px; margin: 0 0 8px; }
+.hint { color: #515f74; font-size: 14px; margin: 0 0 20px; }
+.dashboard { overflow-x: auto; background: #fff; border: 1px solid #c6c6cd; border-radius: 8px; }
+.tableauPlaceholder { position: relative; margin: auto; }
+.tableauPlaceholder img { width: 100%; border: 0; }
+footer { border-top: 1px solid #c6c6cd; padding: 24px; text-align: center; color: #515f74; font-size: 12px; }
+@media (max-width: 500px) { main { padding: 32px 16px; } }
+
+.project-section { margin-top: 48px; }
+.summary-grid, .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+figure, .methods { margin: 0; background: #fff; border: 1px solid #c6c6cd; border-radius: 8px; padding: 24px; }
+h3 { font-size: 17px; margin: 0 0 8px; }
+.methods p { margin: 0; color: #45464d; }
+.methods p + p { margin-top: 12px; }
+.section-intro { max-width: 800px; color: #45464d; margin-bottom: 24px; }
+figure { padding: 16px; }
+figure a { display: block; }
+figure img { display: block; width: 100%; height: auto; border-radius: 4px; }
+figcaption { margin-top: 12px; font-size: 14px; font-weight: 600; }
+.image-placeholder { display: grid; place-items: center; min-height: 180px; padding: 24px; text-align: center; color: #515f74; background: #f2f4f6; border-radius: 4px; font-size: 14px; }
+.image-placeholder[hidden] { display: none; }
+details { margin-top: 24px; }
+summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
+.clouds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 700px) { .summary-grid, .gallery, .clouds { grid-template-columns: 1fr; } }
+
+.image-viewer { border: 0; padding: 20px; border-radius: 8px; background: #fff; max-width: 96vw; max-height: 94vh; }
+.image-viewer::backdrop { background: rgb(0 0 0 / 80%); }
+.image-viewer img { display: block; max-width: 90vw; max-height: 60vh; width: auto; height: auto; object-fit: contain; margin: auto; }
+.image-viewer button { padding: 8px 14px; background: #191c1e; color: #fff; border: 0; border-radius: 4px; font: inherit; cursor: pointer; }
+.image-viewer button:focus-visible { outline: 3px solid #008cc7; outline-offset: 3px; }
+body:has(.image-viewer[open]) { overflow: hidden; }
+.chart-description { display: block; margin-top: 8px; color: #515f74; font-size: 14px; font-weight: 400; }
+.viewer-caption { max-width: 800px; margin: 16px auto; }
+.viewer-caption h2 { font-size: 18px; }
+.viewer-caption p { margin: 8px 0; color: #515f74; font-size: 14px; }
+.viewer-controls { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; }
+.viewer-controls output { font-size: 14px; color: #515f74; }
+.findings-list { max-width: 900px; padding-left: 24px; margin: 0; color: #45464d; }
+.findings-list li { padding-left: 6px; margin-bottom: 18px; }
+.findings-list strong { color: #191c1e; }
+.key-takeaway { max-width: 900px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #c6c6cd; }
+.key-takeaway h3 { font-size: 20px; }
+.key-takeaway p { color: #45464d; margin: 12px 0 0; }
+</style>
+</head>
+<body>
+<nav aria-label="Portfolio navigation"><a href="index.html#projects">&larr; Back to projects</a></nav>
+<main>
+<header>
+<p class="eyebrow">Data analytics / Tableau</p>
+<h1>Book of Mormon &mdash; Authorship &amp; Linguistic Analysis</h1>
+<p class="intro">A personal project connecting my interest in data analytics with my faith. Using 6,585 verses, I explored how word choice, vocabulary, and verse length vary across the text’s traditionally attributed authors with Python, natural language processing, and Tableau.</p>
+<div class="actions">
+<a href="https://public.tableau.com/views/BookofMormon-AuthorshipLinguisticAnalysis/BookofMormonAuthorshipLinguisticAnalysis" target="_blank" rel="noopener noreferrer">Open in Tableau &nearr;</a>
+<a href="https://github.com/drewgladwell/BookofMormon" target="_blank" rel="noopener noreferrer">View source code &nearr;</a>
+</div>
+</header>
+<section aria-labelledby="dashboard-heading">
+<h2 id="dashboard-heading">Interactive dashboard</h2>
+<p class="hint">Use the dashboard controls to explore the data. On smaller screens, scroll horizontally if needed. If the dashboard does not load, use &ldquo;Open in Tableau&rdquo; above.</p>
+<div class="dashboard" tabindex="0" role="region" aria-label="Book of Mormon Tableau dashboard, horizontally scrollable">
+<div class="tableauPlaceholder" id="bom-dashboard">
+<noscript><a href="https://public.tableau.com/views/BookofMormon-AuthorshipLinguisticAnalysis/BookofMormonAuthorshipLinguisticAnalysis"><img alt="Book of Mormon — Authorship and Linguistic Analysis. Open in Tableau to interact." src="https://public.tableau.com/static/images/Bo/BookofMormon-AuthorshipLinguisticAnalysis/BookofMormonAuthorshipLinguisticAnalysis/1_rss.png"></a></noscript>
+<object class="tableauViz" style="display:none;" aria-label="Interactive Book of Mormon authorship and linguistic analysis">
+<param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F">
+<param name="embed_code_version" value="3">
+<param name="site_root" value="">
+<param name="name" value="BookofMormon-AuthorshipLinguisticAnalysis/BookofMormonAuthorshipLinguisticAnalysis">
+<param name="tabs" value="no">
+<param name="toolbar" value="yes">
+<param name="static_image" value="https://public.tableau.com/static/images/Bo/BookofMormon-AuthorshipLinguisticAnalysis/BookofMormonAuthorshipLinguisticAnalysis/1.png">
+<param name="animate_transition" value="yes">
+<param name="display_static_image" value="yes">
+<param name="display_spinner" value="yes">
+<param name="display_overlay" value="yes">
+<param name="display_count" value="yes">
+<param name="language" value="en-US">
+</object>
+</div>
+</div>
+</section>
+
+
+<section class="project-section" aria-labelledby="findings-heading">
+<h2 id="findings-heading">Key findings</h2>
+<p class="section-intro">Distinct language patterns emerge across the assigned author groups, alongside shared religious themes.</p>
+<ul class="findings-list">
+<li><strong>Signature words reflect subject matter.</strong> Jacob’s TF-IDF profile is dominated by the Zenos allegory: vineyard, branches, fruit, and tree. Moroni’s signature term, “jared,” reflects his abridgment of Ether.</li>
+<li><strong>Vocabulary richness needs context.</strong> Enos and Jarom score highest, while Mormon contributes nearly 100,000 words. Short texts tend to score higher on vocabulary richness, so these rankings depend on sample length.</li>
+<li><strong>Shared themes, distinct fingerprints.</strong> “Lord” and “God” recur across all author groups. Shared religious terms remain in thematic word clouds but are excluded from TF-IDF fingerprints to highlight more distinctive words.</li>
+<li><strong>Narrative authors cluster together.</strong> Mormon and Nephi have the highest reported cosine similarity (0.686), followed by Mormon and Moroni (0.577). Jacob and Jarom are the most distinct pair (0.209).</li>
+</ul>
+<div class="key-takeaway">
+<h3>Key Takeaway</h3>
+<p>To go beyond visual comparisons, I ran a one-way ANOVA on verse length across all primary author groups. I excluded “Various” from the book of Omni because it combines five authors with very small samples, making it unsuitable as a single author group for this comparison.</p>
+<p><strong>Results:</strong></p>
+<ul>
+<li><strong>F-statistic:</strong> 7.1096</li>
+<li><strong>P-value:</strong> approximately 0.000001</li>
+</ul>
+<p>If the author groups had equal mean verse lengths, the chance of observing an F-statistic this large or larger would be about <strong>1 in 1,000,000</strong>, assuming the ANOVA assumptions hold. The differences in mean verse length are <strong>statistically significant</strong>, providing evidence beyond visual comparisons that the groups differ.</p>
+<p><strong>Or, in other words, if the author groups had equal mean verse lengths, a result this extreme or more extreme would occur about 1 in 1,000,000 times under the test’s assumptions.</strong></p>
+</div>
+</section>
+<section class="project-section" aria-labelledby="visualizations-heading">
+<h2 id="visualizations-heading">Visualizations</h2>
+<p class="section-intro">Compare word use, vocabulary diversity, verse length, and similarity. Select an available chart to view the full image.</p>
+<div class="gallery">
+<figure><a href="images/bookofmormon/word_frequency_by_author.png" target="_blank" rel="noopener noreferrer" aria-label="Open word frequency by author at full size"><img src="images/bookofmormon/word_frequency_by_author.png" alt="Word frequency by author" loading="lazy" width="2700" height="1500"></a><div class="image-placeholder" hidden>Word frequency by author<br>Image coming soon</div><figcaption>Word frequency by author<span class="chart-description">The ten most frequent words in each author’s text after stopword filtering. Larger counts indicate more occurrences; a word can appear among several authors’ top words.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/vocab_richness.png" target="_blank" rel="noopener noreferrer" aria-label="Open vocabulary richness at full size"><img src="images/bookofmormon/vocab_richness.png" alt="Vocabulary richness" loading="lazy" width="2100" height="750"></a><div class="image-placeholder" hidden>Vocabulary richness<br>Image coming soon</div><figcaption>Vocabulary richness<span class="chart-description">Compares the diversity of vocabulary used by each author. Shorter texts tend to score higher, so differences should be interpreted alongside the amount each author wrote.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/verse_length.png" target="_blank" rel="noopener noreferrer" aria-label="Open verse length distribution at full size"><img src="images/bookofmormon/verse_length.png" alt="Verse length distribution" loading="lazy" width="2100" height="750"></a><div class="image-placeholder" hidden>Verse length distribution<br>Image coming soon</div><figcaption>Verse length distribution<span class="chart-description">Shows how word counts per verse vary within and across author groups. This reveals differences in typical verse length and how widely lengths vary.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/cosine_similarity.png" target="_blank" rel="noopener noreferrer" aria-label="Open cosine similarity heatmap at full size"><img src="images/bookofmormon/cosine_similarity.png" alt="Cosine similarity heatmap" loading="lazy" width="1500" height="1200"></a><div class="image-placeholder" hidden>Cosine similarity heatmap<br>Image coming soon</div><figcaption>Cosine similarity heatmap<span class="chart-description">Compares author word-use profiles on a scale from 0 to 1. Higher scores indicate more similar profiles; similarity can reflect shared topics as well as writing style.</span></figcaption></figure>
+</div>
+<h3 style="margin-top: 32px; font-size: 24px;">Which words occur most by author?</h3>
+<details open><summary>Authorship fingerprints — word clouds</summary><div class="gallery clouds">
+<figure><a href="images/bookofmormon/wordcloud_nephi_fingerprint.png" target="_blank" rel="noopener noreferrer" aria-label="Open nephi — fingerprint word cloud at full size"><img src="images/bookofmormon/wordcloud_nephi_fingerprint.png" alt="Nephi — fingerprint word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Nephi — fingerprint word cloud<br>Image coming soon</div><figcaption>Nephi — fingerprint word cloud<span class="chart-description">Highlights word usage in Nephi’s text after removing expanded stopwords, including shared religious terms. Larger words carry greater weight in the cloud, making distinctive language easier to spot.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_jacob_fingerprint.png" target="_blank" rel="noopener noreferrer" aria-label="Open jacob — fingerprint word cloud at full size"><img src="images/bookofmormon/wordcloud_jacob_fingerprint.png" alt="Jacob — fingerprint word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Jacob — fingerprint word cloud<br>Image coming soon</div><figcaption>Jacob — fingerprint word cloud<span class="chart-description">Highlights word usage in Jacob’s text after removing expanded stopwords, including shared religious terms. Larger words carry greater weight in the cloud, making distinctive language easier to spot.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_enos_fingerprint.png" target="_blank" rel="noopener noreferrer" aria-label="Open enos — fingerprint word cloud at full size"><img src="images/bookofmormon/wordcloud_enos_fingerprint.png" alt="Enos — fingerprint word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Enos — fingerprint word cloud<br>Image coming soon</div><figcaption>Enos — fingerprint word cloud<span class="chart-description">Highlights word usage in Enos’s text after removing expanded stopwords, including shared religious terms. Larger words carry greater weight in the cloud, making distinctive language easier to spot.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_mormon_fingerprint.png" target="_blank" rel="noopener noreferrer" aria-label="Open mormon — fingerprint word cloud at full size"><img src="images/bookofmormon/wordcloud_mormon_fingerprint.png" alt="Mormon — fingerprint word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Mormon — fingerprint word cloud<br>Image coming soon</div><figcaption>Mormon — fingerprint word cloud<span class="chart-description">Highlights word usage in Mormon’s text after removing expanded stopwords, including shared religious terms. Larger words carry greater weight in the cloud, making distinctive language easier to spot.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_moroni_fingerprint.png" target="_blank" rel="noopener noreferrer" aria-label="Open moroni — fingerprint word cloud at full size"><img src="images/bookofmormon/wordcloud_moroni_fingerprint.png" alt="Moroni — fingerprint word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Moroni — fingerprint word cloud<br>Image coming soon</div><figcaption>Moroni — fingerprint word cloud<span class="chart-description">Highlights word usage in Moroni’s text after removing expanded stopwords, including shared religious terms. Larger words carry greater weight in the cloud, making distinctive language easier to spot.</span></figcaption></figure>
+</div></details>
+<details open><summary>Shared religious themes — word clouds</summary><div class="gallery clouds">
+<figure><a href="images/bookofmormon/wordcloud_nephi_thematic.png" target="_blank" rel="noopener noreferrer" aria-label="Open nephi — thematic word cloud at full size"><img src="images/bookofmormon/wordcloud_nephi_thematic.png" alt="Nephi — thematic word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Nephi — thematic word cloud<br>Image coming soon</div><figcaption>Nephi — thematic word cloud<span class="chart-description">Shows recurring themes in Nephi’s text with minimal stopword filtering. Larger words are more prominent; shared religious words remain to show the text’s thematic focus.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_jacob_thematic.png" target="_blank" rel="noopener noreferrer" aria-label="Open jacob — thematic word cloud at full size"><img src="images/bookofmormon/wordcloud_jacob_thematic.png" alt="Jacob — thematic word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Jacob — thematic word cloud<br>Image coming soon</div><figcaption>Jacob — thematic word cloud<span class="chart-description">Shows recurring themes in Jacob’s text with minimal stopword filtering. Larger words are more prominent; shared religious words remain to show the text’s thematic focus.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_enos_thematic.png" target="_blank" rel="noopener noreferrer" aria-label="Open enos — thematic word cloud at full size"><img src="images/bookofmormon/wordcloud_enos_thematic.png" alt="Enos — thematic word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Enos — thematic word cloud<br>Image coming soon</div><figcaption>Enos — thematic word cloud<span class="chart-description">Shows recurring themes in Enos’s text with minimal stopword filtering. Larger words are more prominent; shared religious words remain to show the text’s thematic focus.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_mormon_thematic.png" target="_blank" rel="noopener noreferrer" aria-label="Open mormon — thematic word cloud at full size"><img src="images/bookofmormon/wordcloud_mormon_thematic.png" alt="Mormon — thematic word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Mormon — thematic word cloud<br>Image coming soon</div><figcaption>Mormon — thematic word cloud<span class="chart-description">Shows recurring themes in Mormon’s text with minimal stopword filtering. Larger words are more prominent; shared religious words remain to show the text’s thematic focus.</span></figcaption></figure>
+<figure><a href="images/bookofmormon/wordcloud_moroni_thematic.png" target="_blank" rel="noopener noreferrer" aria-label="Open moroni — thematic word cloud at full size"><img src="images/bookofmormon/wordcloud_moroni_thematic.png" alt="Moroni — thematic word cloud" loading="lazy" width="1500" height="750"></a><div class="image-placeholder" hidden>Moroni — thematic word cloud<br>Image coming soon</div><figcaption>Moroni — thematic word cloud<span class="chart-description">Shows recurring themes in Moroni’s text with minimal stopword filtering. Larger words are more prominent; shared religious words remain to show the text’s thematic focus.</span></figcaption></figure>
+</div></details>
+</section>
+<section class="project-section" aria-labelledby="methods-heading">
+<h2 id="methods-heading">Methods &amp; interpretation</h2>
+<div class="methods">
+<p><strong>Statistical results:</strong> The project reports a one-way ANOVA on verse length (F = 7.1096, p ≈ 0.000001) and a chi-square test on word usage (χ² = 20,919.81, reported p ≈ 0). These results indicate differences across the assigned author groups under the tests’ assumptions; they do not establish authorship or explain the cause of those differences.</p>
+<p><strong>Scope &amp; limitations:</strong> The dataset contains 6,585 verses, with book, chapter, verse, assigned author, word count, and text. Attribution follows the project’s traditional author and abridger assignments. The combined “Various” category in Omni was excluded from ANOVA. Text length, subject matter, and grouping decisions matter when interpreting the results.</p>
+<p><strong>Tools:</strong> Python, Pandas, NLTK, scikit-learn, SciPy, Matplotlib, WordCloud, and Tableau.</p>
+</div>
+</section>
+</main>
+<footer>Drew Gladwell Portfolio &middot; <a href="index.html#projects">View all projects</a></footer>
+<dialog class="image-viewer" aria-labelledby="viewer-title" aria-describedby="viewer-description">
+<img alt="">
+<div class="viewer-caption" aria-live="polite">
+<h2 id="viewer-title"></h2>
+<p id="viewer-description"></p>
+</div>
+<div class="viewer-controls">
+<button type="button" data-direction="-1" autofocus>&larr; Previous</button>
+<output aria-live="polite"></output>
+<button type="button" data-direction="1">Next &rarr;</button>
+<button type="button" class="viewer-close">Close &times;</button>
+</div>
+</dialog>
+<script>
+const imageViewer = document.querySelector('.image-viewer');
+const expandedImage = imageViewer.querySelector('img');
+const galleryLinks = Array.from(document.querySelectorAll('figure a'));
+let imageTrigger;
+let imageIndex = 0;
+function showImage(index) {
+  imageIndex = (index + galleryLinks.length) % galleryLinks.length;
+  const link = galleryLinks[imageIndex];
+  const caption = link.closest('figure').querySelector('figcaption');
+  expandedImage.src = link.href;
+  expandedImage.alt = link.querySelector('img').alt;
+  imageViewer.querySelector('#viewer-title').textContent = caption.firstChild.textContent;
+  imageViewer.querySelector('#viewer-description').textContent = caption.querySelector('.chart-description').textContent;
+  imageViewer.querySelector('output').textContent = `${imageIndex + 1} / ${galleryLinks.length}`;
+}
+galleryLinks.forEach((link, index) => {
+  link.removeAttribute('target');
+  link.setAttribute('aria-haspopup', 'dialog');
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    imageTrigger = link;
+    showImage(index);
+    imageViewer.showModal();
+  });
+});
+imageViewer.querySelectorAll('[data-direction]').forEach(button => {
+  button.addEventListener('click', () => showImage(imageIndex + Number(button.dataset.direction)));
+});
+imageViewer.addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    showImage(imageIndex + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+imageViewer.querySelector('.viewer-close').addEventListener('click', () => imageViewer.close());
+imageViewer.addEventListener('click', event => {
+  const bounds = imageViewer.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) imageViewer.close();
+});
+imageViewer.addEventListener('close', () => {
+  expandedImage.removeAttribute('src');
+  imageTrigger?.focus();
+});
+// Keep the gallery readable until its local image assets are supplied.
+document.querySelectorAll('figure img').forEach(img => {
+  function showPlaceholder() {
+    img.parentElement.hidden = true;
+    img.closest('figure').querySelector('.image-placeholder').hidden = false;
+  }
+  img.addEventListener('error', showPlaceholder);
+  if (img.complete && img.naturalWidth === 0) showPlaceholder();
+});
+const placeholder = document.getElementById('bom-dashboard');
+const viz = placeholder.querySelector('object');
+function sizeDashboard() {
+  const mobile = placeholder.parentElement.clientWidth <= 500;
+  placeholder.style.width = mobile ? '100%' : '1200px';
+  viz.style.width = mobile ? '100%' : '1200px';
+  viz.style.height = mobile ? '1477px' : '827px';
+}
+sizeDashboard();
+window.addEventListener('resize', sizeDashboard);
+const script = document.createElement('script');
+script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+viz.parentNode.insertBefore(script, viz);
+</script>
+</body>
+</html>
